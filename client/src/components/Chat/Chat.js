@@ -12,7 +12,14 @@ import './Chat.css';
 const ENDPOINT = 'https://project-chat-application.herokuapp.com/';
 
 let socket;
+var connectionOptions =  {
+  "force new connection" : true,
+  "reconnectionAttempts": "Infinity", 
+  "timeout" : 10000,                  
+  "transports" : ["websocket"]
+};
 
+this.socket = io.connect('http://localhost:5000',connectionOptions);
 const Chat = ({ location }) => {
   const [name, setName] = useState('');
   const [room, setRoom] = useState('');
